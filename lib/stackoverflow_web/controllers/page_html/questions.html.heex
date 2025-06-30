@@ -1,0 +1,70 @@
+<.flash_group flash={@flash} />
+<div class="min-h-screen bg-gray-50 flex flex-col">
+  <!-- Header with Stackoverflow Icon -->
+  <header class="flex items-center h-16 px-6 bg-white shadow-sm">
+    <a href="/" class="flex items-center">
+      <img src="https://stackoverflow.design/assets/img/logos/so/logo-stackoverflow.svg" alt="Stackoverflow Logo" class="h-8 w-auto" />
+    </a>
+  </header>
+
+  <div class="flex flex-1">
+    <!-- Left Sidebar -->
+    <aside class="w-1/5 min-w-[200px] max-w-xs bg-white border-r border-gray-200 p-6 hidden md:block">
+      <h2 class="text-lg font-semibold mb-4">Recent Questions</h2>
+      <ul class="space-y-3">
+        <li class="text-sm text-gray-700">How to use Phoenix LiveView?</li>
+        <li class="text-sm text-gray-700">What is Elixir pattern matching?</li>
+        <li class="text-sm text-gray-700">How to deploy Phoenix app?</li>
+        <li class="text-sm text-gray-700">Difference between GenServer and Task?</li>
+        <li class="text-sm text-gray-700">How to use Ecto migrations?</li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col items-center px-8">
+      <!-- Big Searchbox -->
+      <div class="w-full mb-8">
+        <input type="text" placeholder="Search questions..." class="w-full px-6 py-4 rounded-lg border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 text-lg shadow-sm" />
+      </div>
+
+      <!-- Question Count and Tabs -->
+      <div class="w-full flex flex-col mb-4">
+        <div class="text-gray-700 text-sm mb-2">123 questions</div>
+        <div class="flex border-b border-gray-200 mb-4">
+          <button class="px-4 py-2 text-sm font-medium text-orange-600 border-b-2 border-orange-600 focus:outline-none">Relevance</button>
+          <button class="ml-4 px-4 py-2 text-sm font-medium text-gray-500 hover:text-orange-600 focus:outline-none">AI Sort</button>
+        </div>
+      </div>
+
+      <!-- Questions List -->
+      <div class="w-full space-y-6">
+        <div class="bg-white p-6 rounded-lg shadow border border-gray-100">
+          <div class="flex items-center mb-2">
+            <span class="text-xs text-gray-400 mr-2">2 answers</span>
+            <span class="text-xs text-gray-400">asked 1 hour ago</span>
+          </div>
+          <a href="#" class="block text-lg font-semibold text-orange-700 hover:underline mb-1">How to use Phoenix LiveView?</a>
+          <div class="text-sm text-gray-600 mb-2">I'm trying to understand how LiveView works in Phoenix. Can someone explain the basics and best practices?</div>
+          <div class="flex flex-wrap gap-2 mt-2">
+            <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded text-xs">elixir</span>
+            <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded text-xs">phoenix</span>
+            <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded text-xs">liveview</span>
+          </div>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow border border-gray-100">
+          <div class="flex items-center mb-2">
+            <span class="text-xs text-gray-400 mr-2">0 answers</span>
+            <span class="text-xs text-gray-400">asked 10 minutes ago</span>
+          </div>
+          <a href="#" class="block text-lg font-semibold text-orange-700 hover:underline mb-1">What is Elixir pattern matching?</a>
+          <div class="text-sm text-gray-600 mb-2">Can someone provide examples of pattern matching in Elixir and when to use it?</div>
+          <div class="flex flex-wrap gap-2 mt-2">
+            <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded text-xs">elixir</span>
+            <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded text-xs">pattern-matching</span>
+          </div>
+        </div>
+        <!-- More question cards can go here -->
+      </div>
+    </main>
+  </div>
+</div> 

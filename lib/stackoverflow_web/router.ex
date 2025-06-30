@@ -20,6 +20,7 @@ defmodule StackoverflowWeb.Router do
     get "/login", SessionController, :new
     post "/login", SessionController, :create
     get "/", PageController, :home
+    get "/questions", PageController, :questions
   end
 
   # Other scopes may use custom stacks.
