@@ -19,6 +19,8 @@ defmodule StackoverflowWeb.Router do
 
     get "/login", SessionController, :new
     post "/login", SessionController, :create
+    get "/signup", RegistrationController, :new
+    post "/signup", RegistrationController, :create
     get "/", PageController, :home
     get "/questions", PageController, :questions
     post "/questions/search", PageController, :search

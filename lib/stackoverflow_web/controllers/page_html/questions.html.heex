@@ -1,5 +1,6 @@
 <% query = assigns[:query] || ""
-results = assigns[:results] || [] %>
+results = assigns[:results] || []
+recent_questions = assigns[:recent_questions] || [] %>
 <.flash_group flash={@flash} />
 <div class="min-h-screen bg-gray-50 flex flex-col">
   <!-- Header with Stackoverflow Icon -->
@@ -16,13 +17,29 @@ results = assigns[:results] || [] %>
   <div class="flex flex-1">
     <!-- Left Sidebar -->
     <aside class="w-1/5 min-w-[200px] max-w-xs bg-white border-r border-gray-200 p-6 hidden md:block">
-      <h2 class="text-lg font-semibold mb-4">Recent Questions</h2>
-      <ul class="space-y-3">
-        <li class="text-sm text-gray-700">How to use Phoenix LiveView?</li>
-        <li class="text-sm text-gray-700">What is Elixir pattern matching?</li>
-        <li class="text-sm text-gray-700">How to deploy Phoenix app?</li>
-        <li class="text-sm text-gray-700">Difference between GenServer and Task?</li>
-        <li class="text-sm text-gray-700">How to use Ecto migrations?</li>
+      <h2 class="text-lg font-semibold mb-2">Recent Questions</h2>
+      <div class="border-b border-gray-100 mb-4"></div>
+      <ul class="space-y-2">
+        <%= if recent_questions != [] do %>
+          <%= for q <- recent_questions do %>
+            <li>
+              <form action="/questions/search" method="post" class="m-0 p-0">
+                <input type="hidden" name="_csrf_token" value={Plug.CSRFProtection.get_csrf_token()} />
+                <input type="hidden" name="query" value={q.title} />
+                <button
+                  type="submit"
+                  class="block w-full text-left text-sm text-gray-700 hover:text-orange-600 hover:underline bg-transparent border-none p-0 m-0 cursor-pointer truncate"
+                  style="max-width: 180px;"
+                  title={q.title}
+                >
+                  <%= q.title %>
+                </button>
+              </form>
+            </li>
+          <% end %>
+        <% else %>
+          <li class="text-sm text-gray-400">No recent questions.</li>
+        <% end %>
       </ul>
     </aside>
 
@@ -50,7 +67,9 @@ results = assigns[:results] || [] %>
 
 <!-- Question Count and Tabs -->
       <div class="w-full flex flex-col mb-4">
-        <div class="text-gray-700 text-sm mb-2">123 questions</div>
+        <div class="flex items-center justify-between mb-2">
+          <div class="text-gray-700 text-sm"><%= @count %> questions</div>
+        </div>
         <div class="flex border-b border-gray-200 mb-4">
           <button class="px-4 py-2 text-sm font-medium text-orange-600 border-b-2 border-orange-600 focus:outline-none">
             Relevance

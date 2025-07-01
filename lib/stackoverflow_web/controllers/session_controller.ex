@@ -24,7 +24,7 @@ defmodule StackoverflowWeb.SessionController do
   end
 
   defp check_password(user, password) do
-    # Replace with real password check (e.g., Argon2)
-    user.hashed_password == password
+    # Hash the input password and compare to stored hash
+    Stackoverflow.Users.hash_password(password) == user.hashed_password
   end
 end
