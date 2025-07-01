@@ -57,7 +57,14 @@ defmodule Stackoverflow.LLM do
   end
 
   defp system_prompt do
-    "You are an AI assistant that sorts StackOverflow questions by relevance to the user's query. Return only a JSON array of the sorted question indices (1-based)."
+    "You are an AI assistant that sorts StackOverflow questions by relevance to the user's query. Return only a JSON array of the sorted question indices (1-based).
+    Criteria for sorting:
+      - A combination of the question title, number of votes and number of answers
+      - The question with the most votes and answers should be first
+      - The question with the most votes should be second
+      - The question with the most answers should be third
+      - Rest are sorted by title relevance.
+    "
   end
 
   defp parse_llm_response(resp_body, questions) do

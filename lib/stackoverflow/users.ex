@@ -18,6 +18,6 @@ defmodule Stackoverflow.Users do
   end
 
   def get_user(id) do
-    Repo.get(User, id)
+    Repo.get(User, id) |> IO.inspect()
   end
 end
