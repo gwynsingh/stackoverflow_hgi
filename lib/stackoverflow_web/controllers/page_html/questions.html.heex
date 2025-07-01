@@ -1,6 +1,7 @@
 <% query = assigns[:query] || ""
 results = assigns[:results] || []
-recent_questions = assigns[:recent_questions] || [] %>
+recent_questions = assigns[:recent_questions] || []
+sort = assigns[:sort] || "relevance" %>
 <.flash_group flash={@flash} />
 <div class="min-h-screen bg-gray-50 flex flex-col">
   <!-- Header with Stackoverflow Icon -->
@@ -71,12 +72,28 @@ recent_questions = assigns[:recent_questions] || [] %>
           <div class="text-gray-700 text-sm"><%= @count %> questions</div>
         </div>
         <div class="flex border-b border-gray-200 mb-4">
-          <button class="px-4 py-2 text-sm font-medium text-orange-600 border-b-2 border-orange-600 focus:outline-none">
-            Relevance
-          </button>
-          <button class="ml-4 px-4 py-2 text-sm font-medium text-gray-500 hover:text-orange-600 focus:outline-none">
-            AI Sort
-          </button>
+          <form action="/questions" method="get" class="inline">
+            <button type="submit" name="sort" value="relevance" class={
+              [
+                "px-4 py-2 text-sm font-medium focus:outline-none",
+                sort == "relevance" && "text-orange-600 border-b-2 border-orange-600",
+                sort != "relevance" && "text-gray-500 hover:text-orange-600"
+              ] |> Enum.join(" ")
+            }>
+              Relevance
+            </button>
+          </form>
+          <form action="/questions" method="get" class="ml-4 inline">
+            <button type="submit" name="sort" value="ai" class={
+              [
+                "px-4 py-2 text-sm font-medium focus:outline-none",
+                sort == "ai" && "text-orange-600 border-b-2 border-orange-600",
+                sort != "ai" && "text-gray-500 hover:text-orange-600"
+              ] |> Enum.join(" ")
+            }>
+              AI Sort
+            </button>
+          </form>
         </div>
       </div>
 

@@ -17,7 +17,8 @@ defmodule Stackoverflow.Application do
       # Start a worker by calling: Stackoverflow.Worker.start_link(arg)
       # {Stackoverflow.Worker, arg},
       # Start to serve requests, typically the last entry
-      StackoverflowWeb.Endpoint
+      StackoverflowWeb.Endpoint,
+      Stackoverflow.ResultCache
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
