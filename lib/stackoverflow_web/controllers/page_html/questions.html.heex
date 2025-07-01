@@ -118,7 +118,7 @@ sort = assigns[:sort] || "relevance" %>
       </div>
 
       <!-- Questions List -->
-      <div class="w-full space-y-4 mt-4">
+      <div class="w-full space-y-4 mt-4 pb-12">
         <%= if results != [] do %>
           <%= if Enum.empty?(results) do %>
             <div class="text-gray-500">No results found.</div>
@@ -183,4 +183,8 @@ sort = assigns[:sort] || "relevance" %>
       </div>
     </main>
   </div>
+  <!-- Minimal Footer -->
+  <footer class="w-full bg-gray-50 border-t border-gray-200 py-4 text-center text-xs text-gray-400 mt-auto">
+    Powered by Stack Overflow API
+  </footer>
 </div>
