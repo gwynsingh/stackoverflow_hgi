@@ -21,6 +21,12 @@ defmodule StackoverflowWeb.Router do
     post "/login", SessionController, :create
     get "/", PageController, :home
     get "/questions", PageController, :questions
+    post "/questions/search", PageController, :search
+  end
+
+  scope "/api", StackoverflowWeb do
+    pipe_through :api
+    post "/search", ApiController, :search
   end
 
   # Other scopes may use custom stacks.
