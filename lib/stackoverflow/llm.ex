@@ -49,7 +49,7 @@ defmodule Stackoverflow.LLM do
       questions
       |> Enum.with_index(1)
       |> Enum.map(fn {q, idx} ->
-        "#{idx}. #{q["title"]}\n#{q["link"]}"
+        "#{idx}. #{q["title"]}\n"
       end)
       |> Enum.join("\n\n")
 

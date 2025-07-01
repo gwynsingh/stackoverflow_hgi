@@ -5,7 +5,6 @@ defmodule Stackoverflow.Repo.Migrations.CreateRecentQuestions do
     create table(:recent_questions) do
       add :user_id, references(:users, on_delete: :delete_all)
       add :title, :string
-      add :link, :string
       add :asked_at, :utc_datetime
       timestamps()
     end

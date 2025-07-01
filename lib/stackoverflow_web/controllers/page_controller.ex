@@ -76,7 +76,6 @@ defmodule StackoverflowWeb.PageController do
     if user_id do
       Stackoverflow.RecentQuestions.add_recent_question(user_id, %{
         title: query,
-        link: nil,
         asked_at: DateTime.utc_now()
       })
     end
