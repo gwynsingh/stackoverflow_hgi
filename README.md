@@ -2,20 +2,18 @@
 
 To start your Phoenix server:
 
-  * Run `mix setup` to install and setup dependencies
-  * Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
+- Run `./setup.sh` to start Postgres (containerized) and set up the project
+- Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
+- Head over to `http://localhost:4000/questions` 
+- You can either SignUp and create a new user account . Or you can use the Pre-Seeded account 
+- Account Details: 
+    - Email: `johndoe@example.com`
+    - Passowrd: `password`
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
 ## Environment Variables
-  * Refer .env.sample for the required environment variables. 
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
-
-## Learn more
-
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+- Refer .env.sample for the required environment variables.
+- A working `OPENAI_API_KEY` is needed for accessing the AI sort functionality. 
+- If you want to use Postgres as a containerized service, use port 5433. Otherwise, use port 5432.

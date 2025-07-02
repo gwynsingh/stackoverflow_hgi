@@ -10,5 +10,6 @@ defmodule Stackoverflow.Repo.Migrations.CreateRecentQuestions do
     end
 
     create index(:recent_questions, [:user_id])
+    create unique_index(:recent_questions, [:user_id, :title])
   end
 end

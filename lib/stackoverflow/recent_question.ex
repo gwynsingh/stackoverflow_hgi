@@ -14,5 +14,6 @@ defmodule Stackoverflow.RecentQuestion do
     recent_question
     |> cast(attrs, [:user_id, :title, :asked_at])
     |> validate_required([:user_id, :title, :asked_at])
+    |> foreign_key_constraint(:user_id)
   end
 end

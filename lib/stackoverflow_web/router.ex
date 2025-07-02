@@ -23,7 +23,6 @@ defmodule StackoverflowWeb.Router do
     post "/signup", RegistrationController, :create
     get "/", PageController, :home
     get "/questions", PageController, :questions
-    post "/questions/search", PageController, :search
   end
 
   scope "/api", StackoverflowWeb do

@@ -1,16 +1,9 @@
 defmodule Stackoverflow.LLM do
-  @moduledoc """
-  Module for interacting with OpenAI to sort StackOverflow questions by relevance.
-  """
+  @moduledoc false
 
   @openai_api_url "https://api.openai.com/v1/chat/completions"
   @model "gpt-3.5-turbo-0125"
 
-  @doc """
-  Sorts a list of questions by relevance using OpenAI LLM.
-  Receives the user query and a list of question maps.
-  Returns the sorted list of questions (or their IDs).
-  """
   def sort_questions_by_relevance(user_query, questions) do
     prompt = build_prompt(user_query, questions)
     api_key = System.get_env("OPENAI_API_KEY")
@@ -57,7 +50,14 @@ defmodule Stackoverflow.LLM do
   end
 
   defp system_prompt do
-    "You are an AI assistant that sorts StackOverflow questions by relevance to the user's query. Return only a JSON array of the sorted question indices (1-based)."
+    "You are an AI assistant that sorts StackOverflow questions by relevance to the user's query. Return only a JSON array of the sorted question indices (1-based).
+    Criteria for sorting:
+      - A combination of the question title, number of votes and number of answers
+      - The question with the most votes and answers should be first
+      - The question with the most votes should be second
+      - The question with the most answers should be third
+      - Rest are sorted by title relevance.
+    "
   end
 
   defp parse_llm_response(resp_body, questions) do

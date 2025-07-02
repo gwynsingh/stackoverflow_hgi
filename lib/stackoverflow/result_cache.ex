@@ -1,7 +1,5 @@
 defmodule Stackoverflow.ResultCache do
-  @moduledoc """
-  Simple ETS-based cache for storing search and AI-sorted results.
-  """
+  @moduledoc false
   use GenServer
 
   @table :result_cache

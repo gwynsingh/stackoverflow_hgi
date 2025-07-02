@@ -4,11 +4,13 @@ defmodule Stackoverflow.RecentQuestions do
   alias Stackoverflow.RecentQuestion
 
   def add_recent_question(user_id, attrs) do
-    %RecentQuestion{}
-    |> RecentQuestion.changeset(Map.put(attrs, :user_id, user_id))
-    |> Repo.insert()
+    Repo.insert(
+      %RecentQuestion{}
+      |> RecentQuestion.changeset(Map.put(attrs, :user_id, user_id)),
+      on_conflict: [set: [asked_at: attrs[:asked_at] || attrs["asked_at"]]],
+      conflict_target: [:user_id, :title]
+    )
 
-    # Find IDs to delete (all but the 5 most recent)
     ids_to_delete =
       from(q in RecentQuestion,
         where: q.user_id == ^user_id,
