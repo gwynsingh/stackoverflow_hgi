@@ -11,7 +11,6 @@ defmodule Stackoverflow.RecentQuestions do
       conflict_target: [:user_id, :title]
     )
 
-    # Find IDs to delete (all but the 5 most recent)
     ids_to_delete =
       from(q in RecentQuestion,
         where: q.user_id == ^user_id,
