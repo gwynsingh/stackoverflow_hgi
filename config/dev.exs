@@ -6,7 +6,7 @@ config :stackoverflow, Stackoverflow.Repo,
   password: "postgres",
   hostname: "localhost",
   database: "stackoverflow_dev",
-  port: System.get_env("POSTGRES_PORT") |> String.to_integer() || 5433,
+  port: System.fetch_env!("POSTGRES_PORT") |> String.to_integer() || 5433,
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
