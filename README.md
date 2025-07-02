@@ -30,3 +30,11 @@ Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 - Update Login/Signup page
     - Add stackoverflow UI
     - SSO Signin Options via Google/Github
+- [AI Sort] Update LLM module to generic function 
+    - use atom based approach to select/change the Model/LLM Provider
+        - LLM.sort_questions(questions,query, :open_ai)
+        - LLM.sort_questions(questions,query, :deepseek)
+        - LLM.sort_questions(questions,query, :claude)
+        - LLM.sort_questions(questions,query, :gemini)
+
+        
